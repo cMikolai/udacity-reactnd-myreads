@@ -4,6 +4,7 @@ import { useState } from "react";
 
 function App() {
   const [showSearchPage, setShowSearchpage] = useState(false);
+  const availableReadingStatus = ["Currently Reading", "Want to Read", "Read", "None"];
 
   return (
     <div className="app">
@@ -33,7 +34,14 @@ function App() {
             <h1>MyReads</h1>
           </div>
           <div className="list-books-content">
-            <BookShelf />
+          {
+            availableReadingStatus
+            .filter(status => status !== "None")
+            .map((status) => (
+              <BookShelf
+                status={status} />
+            ))
+          }
           </div>
           <div className="open-search">
             <a onClick={() => setShowSearchpage(!showSearchPage)}>Add a book</a>
