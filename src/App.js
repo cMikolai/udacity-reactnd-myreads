@@ -41,14 +41,18 @@ function App() {
     }
   };
 
-const searchBooks = async (query) => {
-  try {
-    const searchedBooks = await search(query);
-    setSearchResult(searchedBooks);
-  } catch (error) {
-    console.error("Error searching books:", error);
-  }
-};
+  const searchBooks = async (query) => {
+    if (query !== "") {
+      try {
+        const searchedBooks = await search(query);
+        setSearchResult(Array.isArray(searchedBooks) ? searchedBooks : []);
+      } catch (error) {
+        console.error("Error searching books:", error);
+      }
+    } else {
+      setSearchResult([]);
+    }
+  };
 
   return (
     <div className="app">
@@ -57,13 +61,13 @@ const searchBooks = async (query) => {
           <div className="search-books-bar">
             <a
               className="close-search"
-              onClick={() => setShowSearchpage(!showSearchPage)}
+              onClick={() => {setShowSearchpage(!showSearchPage); setSearchResult([])}}
             >
               Close
             </a>
             <div className="search-books-input-wrapper">
               <input
-                onChange={e => searchBooks(e.target.value)}
+                onChange={e => {searchBooks(e.target.value); console.log(e.target.value)}}
                 type="text"
                 placeholder="Search by title, author, or ISBN"
               />

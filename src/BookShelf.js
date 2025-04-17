@@ -11,18 +11,22 @@ export const BookShelf = ({ status, books, updateShelf }) => {
 
                 <div className="bookshelf-books">
                     <ol className="books-grid">
-                        {books.map((book) => (
-                            <li key={book.id}>
-                            <Book
-                                id={book.id}
-                                title={book.title}
-                                authors={book.authors.join(', ')}
-                                imageLink={book.imageLinks?.thumbnail}
-                                shelf={book.shelf || 'None'}
-                                updateShelf={updateShelf}
-                            />
-                            </li>
-                        ))}
+                    {console.log(books)}   
+                        {books.length > 0 ? 
+                            books.map((book) => (
+                                <li key={book.id}>
+                                <Book
+                                    id={book.id}
+                                    title={book.title}
+                                    authors={book.authors.join(', ')}
+                                    imageLink={book.imageLinks?.thumbnail}
+                                    shelf={book.shelf || 'None'}
+                                    updateShelf={updateShelf}
+                                />
+                                </li>
+                            )) :
+                            <div>No results found.</div>
+                        }
                     </ol>
                 </div>
                 
