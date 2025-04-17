@@ -67,7 +67,7 @@ function App() {
             </a>
             <div className="search-books-input-wrapper">
               <input
-                onChange={e => {searchBooks(e.target.value); console.log(e.target.value)}}
+                onChange={e => searchBooks(e.target.value)}
                 type="text"
                 placeholder="Search by title, author, or ISBN"
               />

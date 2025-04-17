@@ -11,7 +11,6 @@ export const BookShelf = ({ status, books, updateShelf }) => {
 
                 <div className="bookshelf-books">
                     <ol className="books-grid">
-                    {console.log(books)}   
                         {books.length > 0 ? 
                             books.map((book) => (
                                 <li key={book.id}>
