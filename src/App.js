@@ -1,10 +1,20 @@
 import "./App.css";
 import { BookShelf } from "./BookShelf";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { getAll } from "./BooksAPI";
 
 function App() {
   const [showSearchPage, setShowSearchpage] = useState(false);
-  const availableReadingStatus = ["Currently Reading", "Want to Read", "Read", "None"];
+  const availableReadingStatus = ["Currently Reading", "Want To Read", "Read", "None"];
+  const [books, setBooks] = useState([]);
+
+  useEffect(() => {
+    const fetchBooks = async () => {
+      const books = await getAll();
+      setBooks(books);
+    };
+    fetchBooks();
+  }, []);
 
   return (
     <div className="app">
@@ -36,11 +46,18 @@ function App() {
           <div className="list-books-content">
           {
             availableReadingStatus
-            .filter(status => status !== "None")
-            .map((status) => (
-              <BookShelf
-                status={status} />
-            ))
+              .filter(status => status !== "None")
+              .map((status) => {
+                return (
+                  <BookShelf
+                    key={status}
+                    status={status}
+                    books={
+                      books.filter((book) => book.shelf === status.toLowerCase().replace(/\s+/g, ''))
+                    }
+                  />
+                );
+              })
           }
           </div>
           <div className="open-search">
