@@ -16,9 +16,9 @@ export const BookShelf = ({ status, books, updateShelf }) => {
                                 <li key={book.id}>
                                 <Book
                                     id={book.id}
-                                    title={book.title}
-                                    authors={book.authors.join(', ')}
-                                    imageLink={book.imageLinks?.thumbnail}
+                                    title={book.title || 'No title available'}
+                                    authors={book.authors && book.authors.join(', ') || 'No authors available'}
+                                    imageLink={book.imageLinks?.thumbnail || ''}
                                     shelf={book.shelf || 'None'}
                                     updateShelf={updateShelf}
                                 />
