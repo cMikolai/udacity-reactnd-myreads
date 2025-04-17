@@ -13,7 +13,7 @@ export const Book = ({id, title, authors, imageLink, shelf, updateShelf}) => {
                 ></div>
                 <div className="book-shelf-changer">
                 <select onChange={e => updateShelf(id, e.target.value)} value={shelf}>
-                    <option value="none" disabled>
+                    <option value="moveTo" disabled>
                     Move to...
                     </option>
                     <option value="currentlyReading">
