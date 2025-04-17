@@ -45,9 +45,21 @@ function App() {
     if (query !== "") {
       try {
         const searchedBooks = await search(query);
-        setSearchResult(Array.isArray(searchedBooks) ? searchedBooks : []);
+        if (Array.isArray(searchedBooks)) {
+          const updatedSearchResults = searchedBooks.map((searchBook) => {
+            const matchingBook = books.find((book) => book.id === searchBook.id);
+            return {
+              ...searchBook,
+              shelf: matchingBook ? matchingBook.shelf : "none",
+            };
+          });
+          setSearchResult(updatedSearchResults);
+        } else {
+          setSearchResult([]);
+        }
       } catch (error) {
         console.error("Error searching books:", error);
+        setSearchResult([]);
       }
     } else {
       setSearchResult([]);
