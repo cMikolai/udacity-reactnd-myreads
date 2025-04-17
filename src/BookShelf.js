@@ -1,6 +1,6 @@
 import { Book } from './Book';
 
-export const BookShelf = ({ status, books }) => {
+export const BookShelf = ({ status, books, updateShelf }) => {
 
     return (
         <div>
@@ -12,10 +12,12 @@ export const BookShelf = ({ status, books }) => {
                         {books.map((book) => (
                             <li key={book.id}>
                             <Book
+                                id={book.id}
                                 title={book.title}
                                 authors={book.authors.join(', ')}
                                 imageLink={book.imageLinks?.thumbnail}
                                 shelf={book.shelf}
+                                updateShelf={updateShelf}
                             />
                             </li>
                         ))}

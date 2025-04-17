@@ -1,4 +1,4 @@
-export const Book = ({title, authors, imageLink, shelf}) => {
+export const Book = ({id, title, authors, imageLink, shelf, updateShelf}) => {
 
     return (
         <div className="book">
@@ -12,7 +12,7 @@ export const Book = ({title, authors, imageLink, shelf}) => {
                 }}
                 ></div>
                 <div className="book-shelf-changer">
-                <select>
+                <select onChange={e => updateShelf(id, e.target.value)} value={shelf}>
                     <option value="none" disabled>
                     Move to...
                     </option>

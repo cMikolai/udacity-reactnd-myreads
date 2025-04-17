@@ -1,7 +1,7 @@
 import "./App.css";
 import { BookShelf } from "./BookShelf";
 import { useState, useEffect } from "react";
-import { getAll } from "./BooksAPI";
+import { getAll, update } from "./BooksAPI";
 
 function App() {
   const [showSearchPage, setShowSearchpage] = useState(false);
@@ -15,6 +15,20 @@ function App() {
     };
     fetchBooks();
   }, []);
+
+  const updateShelf = async (bookId, newShelf) => {
+    try {
+      const updatedShelves = await update(bookId, newShelf);
+  
+      setBooks((prevBooks) =>
+        prevBooks.map((book) =>
+          book.id === bookId ? { ...book, shelf: newShelf } : book
+        )
+      );
+    } catch (error) {
+      console.error("Error updating shelf:", error);
+    }
+  };
 
   return (
     <div className="app">
@@ -52,6 +66,7 @@ function App() {
                   <BookShelf
                     key={status}
                     status={status}
+                    updateShelf={updateShelf}
                     books={
                       books.filter((book) => book.shelf === status.toLowerCase().replace(/\s+/g, ''))
                     }
