@@ -18,7 +18,7 @@ export const BookShelf = ({ status, books, updateShelf }) => {
                                 title={book.title}
                                 authors={book.authors.join(', ')}
                                 imageLink={book.imageLinks?.thumbnail}
-                                shelf={book.shelf}
+                                shelf={book.shelf || 'None'}
                                 updateShelf={updateShelf}
                             />
                             </li>

@@ -19,18 +19,27 @@ function App() {
 
   const updateShelf = async (bookId, newShelf) => {
     try {
-      const updatedShelves = await update(bookId, newShelf);
+      await update(bookId, newShelf);
   
-      setBooks((prevBooks) =>
-        prevBooks.map((book) =>
-          book.id === bookId ? { ...book, shelf: newShelf } : book
-        )
-      );
+      setBooks((prevBooks) => {
+        const bookExists = prevBooks.find((book) => book.id === bookId);
+  
+        if (bookExists) {
+          return prevBooks.map((book) =>
+            book.id === bookId ? { ...book, shelf: newShelf } : book
+          );
+        } else {
+          const newBook = searchResult.find((book) => book.id === bookId);
+          if (newBook) {
+            return [...prevBooks, { ...newBook, shelf: newShelf }];
+          }
+          return prevBooks;
+        }
+      });
     } catch (error) {
       console.error("Error updating shelf:", error);
     }
   };
-
 
 const searchBooks = async (query) => {
   try {
