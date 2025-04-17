@@ -68,7 +68,7 @@ function App() {
                     status={status}
                     updateShelf={updateShelf}
                     books={
-                      books.filter((book) => book.shelf === status.toLowerCase().replace(/\s+/g, ''))
+                      books.filter((book) => book.shelf.toLowerCase() === status.toLowerCase().replace(/\s+/g, ''))
                     }
                   />
                 );
