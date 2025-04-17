@@ -1,12 +1,13 @@
 import "./App.css";
 import { BookShelf } from "./BookShelf";
 import { useState, useEffect } from "react";
-import { getAll, update } from "./BooksAPI";
+import { getAll, update, search } from "./BooksAPI";
 
 function App() {
   const [showSearchPage, setShowSearchpage] = useState(false);
   const availableReadingStatus = ["Currently Reading", "Want To Read", "Read", "None"];
   const [books, setBooks] = useState([]);
+  const [searchResult, setSearchResult] = useState([]);
 
   useEffect(() => {
     const fetchBooks = async () => {
@@ -30,6 +31,16 @@ function App() {
     }
   };
 
+
+const searchBooks = async (query) => {
+  try {
+    const searchedBooks = await search(query);
+    setSearchResult(searchedBooks);
+  } catch (error) {
+    console.error("Error searching books:", error);
+  }
+};
+
   return (
     <div className="app">
       {showSearchPage ? (
@@ -43,13 +54,21 @@ function App() {
             </a>
             <div className="search-books-input-wrapper">
               <input
+                onChange={e => searchBooks(e.target.value)}
                 type="text"
                 placeholder="Search by title, author, or ISBN"
               />
             </div>
           </div>
           <div className="search-books-results">
-            <ol className="books-grid"></ol>
+            <ol className="books-grid">
+              <BookShelf
+                updateShelf={updateShelf}
+                books={
+                  searchResult.map(book => book)
+                }
+              />
+            </ol>
           </div>
         </div>
       ) : (
