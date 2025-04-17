@@ -15,7 +15,7 @@ body,
 
 .list-books-title {
   padding: 10px 0;
-  background: #2e7c31;
+  background: #7c2e45;
   text-align: center;
 }
 .list-books-title h1 {
@@ -56,7 +56,7 @@ body,
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background: #2e7d32;
+  background: #7c2e45;
   background-image: url("./icons/add.svg");
   background-repeat: no-repeat;
   background-position: center;
@@ -150,7 +150,7 @@ body,
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: #60ac5d;
+  background: #7c2e45;
   background-image: url("./icons/arrow-drop-down.svg");
   background-repeat: no-repeat;
   background-position: center;
