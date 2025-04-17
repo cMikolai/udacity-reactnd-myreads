@@ -61,14 +61,12 @@ const searchBooks = async (query) => {
             </div>
           </div>
           <div className="search-books-results">
-            <ol className="books-grid">
               <BookShelf
                 updateShelf={updateShelf}
                 books={
                   searchResult.map(book => book)
                 }
               />
-            </ol>
           </div>
         </div>
       ) : (

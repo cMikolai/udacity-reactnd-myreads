@@ -5,7 +5,9 @@ export const BookShelf = ({ status, books, updateShelf }) => {
     return (
         <div>
             <div className="bookshelf">
-                <h2 className="bookshelf-title">{status}</h2>
+            {
+                status ? <h2 className="bookshelf-title">{status}</h2> : ''
+            }
 
                 <div className="bookshelf-books">
                     <ol className="books-grid">
