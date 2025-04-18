@@ -15,6 +15,7 @@ export const BookShelf = ({ status, books, updateShelf }) => {
                             books.map((book) => (
                                 <li key={book.id}>
                                 <Book
+                                    book={book}
                                     id={book.id}
                                     title={book.title || 'No title available'}
                                     authors={book.authors && book.authors.join(', ') || 'No authors available'}

@@ -18,9 +18,9 @@ function App() {
     fetchBooks();
   }, []);
 
-  const updateShelf = async (bookId, newShelf) => {
+  const updateShelf = async (book, newShelf, bookId) => {
     try {
-      await update(bookId, newShelf);
+      await update(book, newShelf);
   
       setBooks((prevBooks) => {
         const bookExists = prevBooks.find((book) => book.id === bookId);
