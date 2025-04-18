@@ -1,11 +1,10 @@
 import "./App.css";
-import { Routes, Route, Link } from 'react-router-dom'
+import { Routes, Route, Link } from 'react-router-dom';
 import { BookShelf } from "./BookShelf";
 import { useState, useEffect } from "react";
 import { getAll, update, search } from "./BooksAPI";
 
 function App() {
-  const [showSearchPage, setShowSearchpage] = useState(false);
   const availableReadingStatus = ["Currently Reading", "Want To Read", "Read", "None"];
   const [books, setBooks] = useState([]);
   const [searchResult, setSearchResult] = useState([]);
