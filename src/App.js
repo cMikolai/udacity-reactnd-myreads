@@ -8,6 +8,7 @@ function App() {
   const availableReadingStatus = ["Currently Reading", "Want To Read", "Read", "None"];
   const [books, setBooks] = useState([]);
   const [searchResult, setSearchResult] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     const fetchBooks = async () => {
@@ -16,6 +17,13 @@ function App() {
     };
     fetchBooks();
   }, []);
+
+  // Update the search results when the books change
+  useEffect(() => {
+    if (searchQuery) {
+      searchBooks(searchQuery);
+    }
+  }, [books]);
 
   const updateShelf = async (book, newShelf, bookId) => {
     try {
@@ -42,6 +50,7 @@ function App() {
   };
 
   const searchBooks = async (query) => {
+    setSearchQuery(query);
     if (query !== "") {
       try {
         const searchedBooks = await search(query);
