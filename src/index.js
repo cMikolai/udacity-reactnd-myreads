@@ -5,7 +5,7 @@ import "./index.css";
 import App from "./App";
 
 ReactDOM.render(
-  <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+  <BrowserRouter basename={process.env.PUBLIC_URL} future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
     <App />
   </BrowserRouter>,
   document.getElementById("root")
