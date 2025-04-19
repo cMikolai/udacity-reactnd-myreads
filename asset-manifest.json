@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/udacity-reactnd-myreads/static/css/main.8236da26.css",
+    "main.js": "/udacity-reactnd-myreads/static/js/main.634e3a3a.js",
+    "index.html": "/udacity-reactnd-myreads/index.html",
+    "static/media/arrow-back.svg": "/udacity-reactnd-myreads/static/media/arrow-back.cd079cab42defead9875.svg",
+    "static/media/add.svg": "/udacity-reactnd-myreads/static/media/add.1b5d9b6afb5557f7992c.svg",
+    "static/media/arrow-drop-down.svg": "/udacity-reactnd-myreads/static/media/arrow-drop-down.4378492a3a09dbfc31ff.svg",
+    "main.8236da26.css.map": "/udacity-reactnd-myreads/static/css/main.8236da26.css.map",
+    "main.634e3a3a.js.map": "/udacity-reactnd-myreads/static/js/main.634e3a3a.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.8236da26.css",
+    "static/js/main.634e3a3a.js"
+  ]
+}
